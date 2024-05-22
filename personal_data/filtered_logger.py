@@ -78,6 +78,7 @@ def main():
           f"name={row[0]}; email={row[1]}; phone={row[2]}; "
           f"ssn={row[3]}; password={row[4]}; ip={row[5]}; "
           f"last_login={row[6]}; user_agent={row[7]};"
+        )
         logger.info(msg)
     cursor.close()
     db.close()
