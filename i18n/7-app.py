@@ -26,7 +26,7 @@ app.config.from_object(Config)
 babel = Babel(app)
 
 
-
+@babel.localeselector
 def get_locale():
     """Get locale for your application"""
     locale = request.args.get('locale')
@@ -65,7 +65,7 @@ def before_request():
     if user:
         g.user = user
 
-
+@babel.timezoneselector
 def get_timezone() -> str:
     "get the timezone and set it as the default timezone"
     try:
@@ -76,7 +76,7 @@ def get_timezone() -> str:
     except pytz.exceptions.UnknownTimeZoneError:
         pass
     return app.config["BABEL_DEFAULT_TIMEZONE"]
-babel.init_app(app, timezone_selector=get_timezone)
+
 
 if __name__ == "__main__":
     app.run()
